@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>精密栄養解析レポート - 白波知恵美様</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* CSS Reset & Variables */
+      :root {
+        --gradient-rainbow: linear-gradient(135deg, #8b5cf6, #3b82f6, #06b6d4, #10b981, #eab308, #f97316, #ef4444);
+        --text-primary: #333333;
+        --text-secondary: #666666;
+        --bg-light: #f9fafb;
+        --white: #ffffff;
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --radius-md: 0.5rem;
+        --radius-lg: 1rem;
+
+        /* Status Colors */
+        --status-red: #ef4444;
+        --status-orange: #f97316;
+        --status-yellow: #eab308;
+        --status-green: #10b981;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Noto Sans JP', sans-serif;
+        color: var(--text-primary);
+        background-color: var(--bg-light);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      header {
+        background: var(--white);
+        box-shadow: var(--shadow-sm);
+        padding: 2rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .logo-group {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .logo-icon {
+        width: 50px;
+        height: 50px;
+        background: var(--gradient-rainbow);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      .brand-text h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        background: var(--gradient-rainbow);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        line-height: 1.2;
+      }
+
+      .brand-text p {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        letter-spacing: 0.05em;
+      }
+
+      .report-meta {
+        text-align: right;
+      }
+
+      .report-meta h2 {
+        font-size: 1.25rem;
+        color: var(--text-primary);
+      }
+
+      .patient-name {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .report-date {
+        color: var(--text-secondary);
+        font-size: 0.875rem;
+      }
+
+      /* Subtitle */
+      .hero-section {
+        padding: 3rem 0 2.5rem;
+        text-align: center;
+        background: white;
+        border-bottom: 1px solid #eee;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .hero-subtitle {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+        max-width: 800px;
+        margin: 0 auto;
+        font-weight: 300;
+      }
+
+      /* Navigation */
+      .nav-wrapper {
+        background: white;
+        border-bottom: 1px solid #eee;
+        padding: 1rem 0;
+        position: sticky;
+        top: 98px; /* header height approx */
+        z-index: 90;
+        overflow-x: auto;
+      }
+
+      .nav-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        list-style: none;
+        min-width: max-content;
+        padding: 0 1rem;
+      }
+
+      .nav-item {
+        cursor: pointer;
+        padding: 0.5rem 0;
+        color: var(--text-secondary);
+        font-weight: 500;
+        position: relative;
+        transition: color 0.3s;
+      }
+
+      .nav-item:hover,
+      .nav-item.active {
+        color: #3b82f6; /* Blue from gradient */
+      }
+
+      .nav-item.active::after {
+        content: '';
+        position: absolute;
+        bottom: -1rem; /* Adjust based on nav padding */
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--gradient-rainbow);
+        border-radius: 3px 3px 0 0;
+      }
+
+      /* Sections */
+      section {
+        padding: 4rem 0;
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.6s ease-out,
+          transform 0.6s ease-out;
+      }
+
+      section#disclaimer {
+        padding: 0 0 2rem;
+      }
+
+      section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .section-title {
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 0.5rem;
+      }
+
+      .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background: var(--gradient-rainbow);
+        border-radius: 2px;
+      }
+
+      /* Intro Text */
+      .intro-text p {
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        text-align: justify;
+      }
+
+      /* Summary Cards */
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .card {
+        background: white;
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        box-shadow: var(--shadow-md);
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+        border-left: 5px solid transparent;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .card.priority-red {
+        border-left-color: var(--status-red);
+      }
+      .card.priority-orange {
+        border-left-color: var(--status-orange);
+      }
+      .card.priority-yellow {
+        border-left-color: var(--status-yellow);
+      }
+      .card.priority-green {
+        border-left-color: var(--status-green);
+      }
+
+      .card-title {
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .positive-list {
+        list-style: none;
+        margin-top: 2rem;
+        background: #f0fdf4;
+        padding: 1.5rem;
+        border-radius: var(--radius-md);
+        border: 1px solid #bbf7d0;
+      }
+
+      .positive-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+        color: #15803d;
+        font-weight: 500;
+      }
+
+      /* Charts Section */
+      .charts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .chart-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .chart-header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .gauge-container {
+        position: relative;
+        width: 150px;
+        height: 150px;
+      }
+
+      .gauge-value {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+
+      .gauge-value .val {
+        font-size: 1.5rem;
+        font-weight: 700;
+        display: block;
+      }
+
+      .gauge-value .unit {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+      }
+
+      svg.gauge {
+        width: 100%;
+        height: 100%;
+        transform: rotate(-90deg);
+      }
+
+      .gauge-bg {
+        fill: none;
+        stroke: #e5e7eb;
+        stroke-width: 10;
+      }
+
+      .gauge-fill {
+        fill: none;
+        stroke-width: 10;
+        stroke-linecap: round;
+        transition: stroke-dasharray 1s ease-out;
+      }
+
+      .ideal-range {
+        margin-top: 1rem;
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+      }
+
+      .detail-explanation {
+        margin-top: 3rem;
+      }
+
+      .detail-item {
+        background: white;
+        padding: 1.5rem;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+        margin-bottom: 1.5rem;
+      }
+
+      .detail-item h3 {
+        color: var(--text-primary);
+        border-bottom: 2px solid #eee;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .detail-item ul {
+        list-style-type: disc;
+        padding-left: 1.5rem;
+      }
+
+      .detail-item li {
+        margin-bottom: 0.5rem;
+      }
+
+      /* Improvement Plans */
+      .step-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .step-card {
+        background: white;
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+        box-shadow: var(--shadow-md);
+        display: flex;
+        gap: 1.5rem;
+        align-items: flex-start;
+      }
+
+      .step-number {
+        font-size: 2rem;
+        font-weight: 900;
+        background: var(--gradient-rainbow);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        min-width: 50px;
+      }
+
+      .step-content h3 {
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+      }
+
+      .food-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .food-item {
+        background: #f8fafc;
+        padding: 1rem;
+        border-radius: var(--radius-md);
+        text-align: center;
+        border: 1px solid #e2e8f0;
+      }
+
+      .food-name {
+        font-weight: 700;
+        color: #0f172a;
+        display: block;
+        margin-bottom: 0.25rem;
+      }
+
+      .food-desc {
+        font-size: 0.75rem;
+        color: #64748b;
+      }
+
+      /* Timeline */
+      .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .timeline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 20px;
+        width: 4px;
+        background: #e5e7eb;
+        border-radius: 2px;
+      }
+
+      .timeline-item {
+        position: relative;
+        padding-left: 60px;
+        margin-bottom: 3rem;
+      }
+
+      .timeline-icon {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 44px;
+        height: 44px;
+        background: white;
+        border: 4px solid #3b82f6;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        z-index: 10;
+      }
+
+      .timeline-content {
+        background: white;
+        padding: 1.5rem;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+      }
+
+      .timeline-time {
+        font-weight: 700;
+        color: #3b82f6;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      /* Footer */
+      footer {
+        background: #111827;
+        color: white;
+        padding: 3rem 0;
+        margin-top: 4rem;
+        text-align: center;
+      }
+
+      .footer-logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .footer-line {
+        height: 4px;
+        background: var(--gradient-rainbow);
+        width: 100%;
+        margin-top: 2rem;
+      }
+
+      .disclaimer {
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        color: #991b1b;
+        padding: 1.5rem;
+        border-radius: var(--radius-md);
+        margin-bottom: 3rem;
+        font-size: 0.875rem;
+      }
+
+      /* Additional Styles */
+      .header-rainbow-bar {
+        height: 5px;
+        background: var(--gradient-rainbow);
+        width: 100%;
+        margin-bottom: 0;
+      }
+
+      .intro-text p {
+        background: white;
+        border-left: 4px solid transparent;
+        border-image: var(--gradient-rainbow) 1;
+        padding: 1.25rem 1.5rem;
+        border-radius: 0 0.5rem 0.5rem 0;
+        margin-bottom: 1.25rem;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .food-item:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .timeline-item:last-child {
+        margin-bottom: 0;
+      }
+
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+      }
+
+      .status-badge-red { animation: pulse 2s infinite; }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .report-meta {
+          text-align: left;
+          margin-top: 1rem;
+        }
+        .nav-tabs {
+          justify-content: flex-start;
+          padding-bottom: 1rem;
+        }
+        .step-card {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+        .charts-grid {
+          grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header-rainbow-bar"></div>
+    <header>
+      <div class="container header-content">
+        <div class="logo-group">
+          <div class="logo-icon">MW</div>
+          <div class="brand-text">
+            <h1>MSP wellness lab</h1>
+            <p>Medical Solution Partner</p>
+          </div>
+        </div>
+        <div class="report-meta">
+          <h2>精密栄養解析レポート 第2回</h2>
+          <div class="patient-name">白波 知恵美 様</div>
+          <div class="report-date">解析日：2025年2月〜3月</div>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero-section">
+      <div class="container">
+        <div style="display:inline-block;background:linear-gradient(135deg,#8b5cf620,#3b82f620,#06b6d420);border-radius:2rem;padding:0.5rem 1.5rem;margin-bottom:1rem;">
+          <span style="font-size:0.9rem;font-weight:600;background:var(--gradient-rainbow);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">2回目解析結果</span>
+        </div>
+        <h3 class="hero-subtitle">🌸 三寒四温の季節、あなたの体と向き合う精密栄養解析</h3>
+        <p style="margin-top:0.75rem;font-size:0.9rem;color:#999;">患者番号：P2512158-00001 ｜ 解析日：2025年2月〜3月</p>
+      </div>
+    </section>
+
+    <div class="nav-wrapper">
+      <div class="container">
+        <ul class="nav-tabs">
+          <li class="nav-item active" onclick="scrollToSection('intro')">はじめに</li>
+          <li class="nav-item" onclick="scrollToSection('summary')">総合評価</li>
+          <li class="nav-item" onclick="scrollToSection('details')">血液検査詳細</li>
+          <li class="nav-item" onclick="scrollToSection('diet')">改善プラン（食事）</li>
+          <li class="nav-item" onclick="scrollToSection('lifestyle')">改善プラン（生活習慣）</li>
+          <li class="nav-item" onclick="scrollToSection('closing')">おわりに</li>
+        </ul>
+      </div>
+    </div>
+
+    <main class="container">
+      <!-- はじめに -->
+      <section id="intro">
+        <h2 class="section-title">はじめに</h2>
+        <div class="intro-text">
+          <p>
+            三寒四温という言葉が、まさに身体で実感されるこの時期――朝は吐く息が白くなるほど冷え込んだかと思えば、日中は春の陽射しが頬に暖かく、そしてまた翌日には北風が吹き戻す。2月の終わりから3月にかけてのこの季節は、自然界が冬のこもりから春の発散へとダイナミックに切り替わる、一年でもっとも「揺れ動く」時期です。東洋医学では「春は肝の季節」と呼ばれ、冬の間に体内に溜め込んだ老廃物を一気に排出しようと肝臓がフル稼働し始めるタイミングでもあります。
+          </p>
+          <p>
+            白波様、今回の分析を通じて、改めてご自身の健康と向き合うお気持ちに敬意を表します。以前の分析でも確認された「脱水傾向」「血糖値の乱高下」「脂質代謝の停滞」といった課題が、この季節の環境変化とどのように干渉し合い、ホットフラッシュや膝の痛み、乾燥肌という日々のお悩みに影響を及ぼしているのか。今回はその「季節と体の交差点」に焦点を当て、分子レベルのメカニズムから掘り下げてまいります。
+          </p>
+        </div>
+      </section>
+
+      <!-- 総合評価 -->
+      <section id="summary">
+        <h2 class="section-title">総合評価サマリー</h2>
+        <div class="summary-grid">
+          <div class="card priority-red">
+            <div class="card-title">🔴 隠れ脱水・腎機能ストレス</div>
+            <p>最優先課題です。血液が濃縮され、腎臓へ大きな負担がかかっています。</p>
+          </div>
+          <div class="card priority-orange">
+            <div class="card-title">🟠 血糖値スパイク・エネルギー欠乏</div>
+            <p>食後の高血糖と、日常的なエネルギー不足が同時に起きています。</p>
+          </div>
+          <div class="card priority-yellow">
+            <div class="card-title">🟡 脂質代謝異常・肝デトックス負荷</div>
+            <p>更年期特有の脂質バランスの乱れと、肝臓の疲れが見られます。</p>
+          </div>
+          <div class="card priority-green">
+            <div class="card-title">🟢 慢性炎症・免疫バランスの乱れ</div>
+            <p>季節性のアレルギーや関節の炎症など、免疫系への負担があります。</p>
+          </div>
+        </div>
+
+        <ul class="positive-list">
+          <li>✅ <strong>AST・ALT</strong>：肝細胞の破壊は見られず、良好な状態です。</li>
+          <li>✅ <strong>血小板数</strong>：正常範囲内で、血液凝固機能は保たれています。</li>
+        </ul>
+      </section>
+
+      <!-- 血液検査詳細 -->
+      <section id="details">
+        <h2 class="section-title">血液検査詳細</h2>
+        <div class="charts-grid" id="charts-container">
+          <!-- JS will populate this -->
+        </div>
+
+        <div class="detail-explanation">
+          <div class="detail-item">
+            <h3>① 血液の濃縮（隠れ脱水）と腎機能ストレス</h3>
+            <ul>
+              <li>
+                赤血球数、ヘモグロビン、ヘマトクリットが全て理想値を超えています。これは「血が多い」のではなく、水分不足で血液が「煮詰まっている」状態です。
+              </li>
+              <li>eGFRが57.6と低く、脱水により腎臓のろ過機能に負荷がかかっています。</li>
+              <li>「乾燥肌」は表面だけでなく、細胞レベルでの水分枯渇のサインです。</li>
+            </ul>
+          </div>
+          <div class="detail-item">
+            <h3>② 血糖調節の乱れと低中性脂肪のパラドックス</h3>
+            <ul>
+              <li>HbA1c 5.7%は、過去1〜2ヶ月の血糖レベルが高かったことを示します。</li>
+              <li>一方で中性脂肪は47と低すぎます。これは予備燃料が枯渇している状態です。</li>
+              <li>平日2食・休日1食という不規則な食事が、血糖値の急上昇（スパイク）とガス欠を招いています。</li>
+            </ul>
+          </div>
+          <div class="detail-item">
+            <h3>③ 脂質プロファイルの乱れ</h3>
+            <ul>
+              <li>LDL（悪玉）コレステロールの高値は、エストロゲン低下による更年期の影響が大きいです。</li>
+              <li>HDL（善玉）が高値ですが、機能が低下している可能性があります。</li>
+              <li>γ-GTPが低く、肝臓の解毒力が弱まっています。春のデトックスにはサポートが必要です。</li>
+            </ul>
+          </div>
+          <div class="detail-item">
+            <h3>④ 白血球数高値と慢性炎症</h3>
+            <ul>
+              <li>
+                白血球数が8630と高めです。感染症がない場合、体内のどこかで慢性的な炎症（膝痛や血管の炎症など）が起きているサインです。
+              </li>
+              <li>花粉やPM2.5の季節が、免疫システムにさらなる負担をかけています。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 改善プラン（食事） -->
+      <section id="diet">
+        <h2 class="section-title">改善プラン（食事・栄養素）</h2>
+        <div class="step-cards">
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <div class="step-content">
+              <h3>「水和」の技術 💧</h3>
+              <p><strong>目標：1日1.5リットル（ノンカフェイン）</strong></p>
+              <p>
+                一気に飲むと排出されてしまいます。「1時間にコップ半分（約100ml）」をちょこちょこ飲みましょう。朝一番と就寝前は、内臓を温める「白湯（50〜60℃）」が最適です。
+              </p>
+              <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #666">
+                タイムライン：起床後 ➡ 午前中500ml ➡ 午後500ml ➡ 夕方以降500ml
+              </p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <div class="step-content">
+              <h3>血糖値を安定させる「補食戦略」🍱</h3>
+              <p>
+                <strong>プロテイン・ファースト：</strong
+                >食事は「タンパク質（肉・魚・卵）」から先に食べ、炭水化物は最後に。
+              </p>
+              <p>
+                <strong>午後の補食：</strong
+                >素焼きナッツ（約20g）や高カカオチョコ（2〜3粒）を間食に取り入れ、夕方のガス欠を防ぎましょう。
+              </p>
+              <p>甘いお菓子は、質の良い脂質とタンパク質に置き換えていきます。</p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <div class="step-content">
+              <h3>旬の食材で体を整える 🌸</h3>
+              <p>春の苦味野菜は肝臓の解毒を助け、旬の魚介は血液の材料になります。</p>
+              <div class="food-grid">
+                <div class="food-item">
+                  <span class="food-name">🌿 菜の花</span>
+                  <span class="food-desc">肝臓デトックス<br>茹でてお浸しに</span>
+                </div>
+                <div class="food-item">
+                  <span class="food-name">🌱 ふきのとう</span>
+                  <span class="food-desc">苦味が肝を刺激<br>ふき味噌に</span>
+                </div>
+                <div class="food-item">
+                  <span class="food-name">🐚 あさり</span>
+                  <span class="food-desc">鉄分・B12補給<br>味噌汁に</span>
+                </div>
+                <div class="food-item">
+                  <span class="food-name">🧅 新玉ねぎ</span>
+                  <span class="food-desc">血流改善<br>スープの具に</span>
+                </div>
+                <div class="food-item">
+                  <span class="food-name">🥬 春キャベツ</span>
+                  <span class="food-desc">ビタミンC補給<br>豚肉と重ね蒸し</span>
+                </div>
+                <div class="food-item">
+                  <span class="food-name">🐟 カツオ</span>
+                  <span class="food-desc">鉄分・タンパク質<br>刺身にレモン</span>
+                </div>
+                <div class="food-item">
+                  <span class="food-name">🥩 豚ヒレ</span>
+                  <span class="food-desc">ビタミンB群<br>ソテーに</span>
+                </div>
+                <div class="food-item">
+                  <span class="food-name">🥦 ブロッコリー</span>
+                  <span class="food-desc">ビタミンC・葉酸<br>蒸してオリーブ油</span>
+                </div>
+                <div class="food-item">
+                  <span class="food-name">🫚 ショウガ</span>
+                  <span class="food-desc">血流・温め<br>白湯に加える</span>
+                </div>
+                <div class="food-item">
+                  <span class="food-name">🍫 高カカオチョコ</span>
+                  <span class="food-desc">LDL酸化防止<br>70%以上を少量</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 改善プラン（生活習慣） -->
+      <section id="lifestyle">
+        <h2 class="section-title">改善プラン（生活習慣）</h2>
+        <p style="margin-bottom:2rem;font-size:1.05rem;color:#555;">1日のルーティンとして取り入れていきましょう。小さな積み重ねが大きな変化をもたらします。</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-icon">🌅</div>
+            <div class="timeline-content">
+              <span class="timeline-time">起床時</span>
+              <h3 style="margin-bottom:0.75rem;">朝のデトックス儀式</h3>
+              <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.6rem;">
+                <li>🪥 <strong>舌磨き：</strong>歯磨きの前に、ステンレスや銅製の舌クリーナーで舌の白い苔を優しく除去</li>
+                <li>🫗 <strong>オイルうがい：</strong>太白ごま油 大さじ1を口に含み5〜10分くちゅくちゅ。粘膜バリアを強化。</li>
+                <li>☕ <strong>白湯1杯：</strong>50〜60℃に冷ました白湯で消化の火（アグニ）を灯す</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-icon">☀️</div>
+            <div class="timeline-content">
+              <span class="timeline-time">日中（1時間ごと）</span>
+              <h3 style="margin-bottom:0.75rem;">血流を促す「ミニ運動」</h3>
+              <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.6rem;">
+                <li>👟 <strong>かかとの上げ下げ：</strong>20回（ふくらはぎポンプで下半身の血流改善）</li>
+                <li>🔄 <strong>足首回し：</strong>左右10回ずつ（デスクワーク中でも実践可）</li>
+                <li>💧 <strong>水分補給：</strong>約100ml（コップ半分）を毎時間こまめに</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-icon">🌙</div>
+            <div class="timeline-content">
+              <span class="timeline-time">就寝1時間前（23時就寝の場合：22時頃）</span>
+              <h3 style="margin-bottom:0.75rem;">エプソムソルト入浴🛁</h3>
+              <div style="background:#f0f9ff;border-radius:0.5rem;padding:1rem;margin-bottom:0.75rem;">
+                <p style="font-weight:700;color:#0369a1;margin-bottom:0.5rem;">入浴レシピ</p>
+                <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.4rem;font-size:0.95rem;">
+                  <li>🌡️ お湯の温度：<strong>38〜40℃</strong>（ぬるめ）</li>
+                  <li>🧂 エプソムソルト：<strong>100〜200g</strong>を溶かす</li>
+                  <li>⏱️ 浸かる時間：<strong>15〜20分</strong></li>
+                  <li>✨ 効果：マグネシウムの経皮吸収・副交感神経を優位に</li>
+                </ul>
+              </div>
+              <p>🦵 入浴中に膝の曲げ伸ばしをゆっくり行うと、浮力で関節負担なくケアできます。</p>
+              <p style="margin-top:0.5rem;">😴 就寝時間：<strong>23時</strong>を維持してください（素晴らしい習慣です！）</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:white;border-radius:1rem;padding:2rem;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);margin-top:3rem;">
+          <h3 style="margin-bottom:1.5rem;font-size:1.2rem;">📋 次回検査での追加推奨項目</h3>
+          <p style="margin-bottom:1rem;color:#666;">今回の検査では未測定のため、次回ぜひチェックしていただきたい項目です：</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:0.75rem;">
+            <div style="background:#fef3c7;padding:0.75rem;border-radius:0.5rem;text-align:center;font-weight:700;font-size:0.9rem;">フェリチン</div>
+            <div style="background:#fef3c7;padding:0.75rem;border-radius:0.5rem;text-align:center;font-weight:700;font-size:0.9rem;">血清鉄</div>
+            <div style="background:#fef3c7;padding:0.75rem;border-radius:0.5rem;text-align:center;font-weight:700;font-size:0.9rem;">TIBC</div>
+            <div style="background:#fee2e2;padding:0.75rem;border-radius:0.5rem;text-align:center;font-weight:700;font-size:0.9rem;">CRP（炎症マーカー）</div>
+            <div style="background:#ede9fe;padding:0.75rem;border-radius:0.5rem;text-align:center;font-weight:700;font-size:0.9rem;">TSH・FT3・FT4</div>
+            <div style="background:#dcfce7;padding:0.75rem;border-radius:0.5rem;text-align:center;font-weight:700;font-size:0.9rem;">ビタミンD</div>
+            <div style="background:#dcfce7;padding:0.75rem;border-radius:0.5rem;text-align:center;font-weight:700;font-size:0.9rem;">亜鉛</div>
+            <div style="background:#dcfce7;padding:0.75rem;border-radius:0.5rem;text-align:center;font-weight:700;font-size:0.9rem;">マグネシウム</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- おわりに -->
+      <section id="closing">
+        <h2 class="section-title">おわりに</h2>
+        <div style="background:white;border-radius:1rem;padding:2.5rem;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);text-align:center;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;width:100%;height:6px;background:linear-gradient(90deg,#8b5cf6,#3b82f6,#06b6d4,#10b981,#eab308,#f97316,#ef4444);"></div>
+          <p style="font-size:1.15rem;line-height:1.9;text-align:justify;margin-bottom:1.5rem;">
+            白波様のお体には、今まさに春の訪れとともに変化するポテンシャルが備わっています。<strong>AST・ALTが正常で肝細胞ダメージがなく、血小板数も正常範囲にある今こそ、栄養療法が最も効果的に働くタイミングです。</strong>
+          </p>
+          <p style="font-size:1.15rem;line-height:1.9;text-align:justify;margin-bottom:1.5rem;">
+            水分を一口ずつ、補食を一つずつ。小さな習慣の積み重ねが、体と心を軽やかに花開かせてくれます。バウムクーヘンの代わりにナッツを、冷たいコーヒーの代わりに白湯を。焦らず、でも着実に。
+          </p>
+          <p style="font-size:1.15rem;line-height:1.9;text-align:justify;">
+            次回の解析でその変化を一緒に確認しましょう。あなたの体の底力を、数値で実証していきます。🌸
+          </p>
+          <div style="margin-top:2rem;display:inline-block;background:linear-gradient(135deg,#8b5cf6,#3b82f6,#06b6d4,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:1.5rem;font-weight:700;">MSP wellness lab</div>
+        </div>
+      </section>
+
+      <!-- 注意事項 -->
+      <section id="disclaimer">
+        <div class="disclaimer">
+          <h3 style="margin-bottom:0.75rem;">⚠️ 解析結果に関する注意事項</h3>
+          <ol style="padding-left:1.5rem;display:flex;flex-direction:column;gap:0.5rem;">
+            <li>本レポートの推奨事項は、現在の血液検査結果やライフログなどの客観的指標に基づいた推察と、一般的な精密栄養学の知見に基づくアドバイスが中心となります。</li>
+            <li>本レポートは医学的診断や治療に代わるものではなく、健康上の懸念や現在経過観察中の疾患（子宮筋腫など）については、必要な場合は必ず主治医にご相談ください。</li>
+            <li>お身体の状態は、食事、運動、睡眠、ストレスなどの生活習慣によって日々ダイナミックに変化します。今後も継続的な健康データの取得とモニタリングが推奨されます。</li>
+          </ol>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-logo">
+          <span style="background:linear-gradient(135deg,#8b5cf6,#3b82f6,#06b6d4,#10b981,#eab308,#f97316,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">MSP wellness lab</span>
+        </div>
+        <p style="color:#9ca3af;font-size:0.875rem;">Medical Solution Partner</p>
+        <p style="color:#6b7280;font-size:0.75rem;margin-top:0.5rem;">患者番号：P2512158-00001 ｜ 白波 知恵美 様 ｜ 第2回解析</p>
+      </div>
+      <div class="footer-line"></div>
+    </footer>
+
+    <script>
+      // ===== Intersection Observer for scroll animations =====
+      const sections = document.querySelectorAll('section');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      sections.forEach(s => observer.observe(s));
+
+      // ===== Active nav item on scroll =====
+      const navItems = document.querySelectorAll('.nav-item');
+      const sectionIds = ['intro','summary','details','diet','lifestyle','closing'];
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sectionIds.forEach(id => {
+          const el = document.getElementById(id);
+          if (el && window.scrollY >= el.offsetTop - 200) current = id;
+        });
+        navItems.forEach(item => {
+          item.classList.remove('active');
+          if (item.getAttribute('onclick') && item.getAttribute('onclick').includes(current)) {
+            item.classList.add('active');
+          }
+        });
+      });
+
+      function scrollToSection(id) {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // ===== Blood Test Data =====
+      const bloodData = [
+        { name: 'AST', value: 21, unit: 'U/L', min: 20, max: 22, absMin: 0, absMax: 50, status: 'good', note: '肝細胞ダメージなし' },
+        { name: 'ALT', value: 19, unit: 'U/L', min: 20, max: 22, absMin: 0, absMax: 50, status: 'low', note: 'B6不足の可能性' },
+        { name: 'γ-GTP', value: 16, unit: 'U/L', min: 20, max: 30, absMin: 0, absMax: 60, status: 'low', note: '解毒酵素活性低下' },
+        { name: 'ALP', value: 88, unit: 'U/L', min: 62, max: 64, absMin: 0, absMax: 130, status: 'high', note: '骨代謝・更年期影響' },
+        { name: '白血球数', value: 8630, unit: '/μL', min: 4000, max: 6000, absMin: 0, absMax: 12000, status: 'high', note: '慢性炎症の疑い' },
+        { name: '血小板', value: 22.2, unit: '×10⁴/μL', min: 18, max: 25, absMin: 0, absMax: 35, status: 'good', note: '正常範囲内' },
+        { name: '赤血球数', value: 509, unit: '×10⁴/μL', min: 450, max: 500, absMin: 350, absMax: 600, status: 'high', note: '隠れ脱水' },
+        { name: 'ヘモグロビン', value: 14.9, unit: 'g/dL', min: 13, max: 14, absMin: 8, absMax: 18, status: 'high', note: '血液濃縮' },
+        { name: 'ヘマトクリット', value: 44.6, unit: '%', min: 35, max: 40, absMin: 20, absMax: 55, status: 'high', note: '血液濃縮' },
+        { name: 'MCV', value: 87.6, unit: 'fL', min: 88, max: 92, absMin: 70, absMax: 105, status: 'low', note: '鉄欠乏マスクの可能性' },
+        { name: 'eGFR', value: 57.6, unit: 'mL/min', min: 90, max: 120, absMin: 0, absMax: 130, status: 'high', note: '腎機能低下（要注意）' },
+        { name: 'クレアチニン', value: 0.82, unit: 'mg/dL', min: 0.4, max: 0.8, absMin: 0, absMax: 1.5, status: 'high', note: 'やや高め' },
+        { name: 'HbA1c', value: 5.7, unit: '%', min: 5.0, max: 5.3, absMin: 4.0, absMax: 7.0, status: 'high', note: '血糖管理の改善が必要' },
+        { name: '空腹時血糖', value: 97, unit: 'mg/dL', min: 80, max: 90, absMin: 60, absMax: 130, status: 'high', note: 'インスリン抵抗性の初期' },
+        { name: '中性脂肪', value: 47, unit: 'mg/dL', min: 70, max: 90, absMin: 0, absMax: 150, status: 'low', note: '予備燃料枯渇' },
+        { name: 'LDLコレステロール', value: 155, unit: 'mg/dL', min: 80, max: 120, absMin: 40, absMax: 200, status: 'high', note: '更年期による上昇' },
+        { name: '総コレステロール', value: 272, unit: 'mg/dL', min: 180, max: 220, absMin: 100, absMax: 320, status: 'high', note: '高値' },
+        { name: 'HDLコレステロール', value: 107, unit: 'mg/dL', min: 70, max: 100, absMin: 30, absMax: 140, status: 'mid', note: 'やや高め（機能要評価）' }
+      ];
+
+      const statusColor = {
+        good: '#10b981',
+        high: '#ef4444',
+        low: '#3b82f6',
+        mid: '#eab308'
+      };
+
+      const statusLabel = {
+        good: '✅ 良好',
+        high: '🔴 高値',
+        low: '🔵 低値',
+        mid: '🟡 やや高'
+      };
+
+      function calcPercent(value, absMin, absMax) {
+        return Math.min(100, Math.max(0, ((value - absMin) / (absMax - absMin)) * 100));
+      }
+
+      function buildGaugeChart(item) {
+        const pct = calcPercent(item.value, item.absMin, item.absMax);
+        const idealMinPct = calcPercent(item.min, item.absMin, item.absMax);
+        const idealMaxPct = calcPercent(item.max, item.absMin, item.absMax);
+        const circumference = 2 * Math.PI * 54;
+        const fillDash = (pct / 100) * circumference;
+        const color = statusColor[item.status];
+
+        // Progress bar
+        const barColor = color;
+        const idealZoneLeft = idealMinPct;
+        const idealZoneWidth = idealMaxPct - idealMinPct;
+
+        return `
+          <div class="chart-card">
+            <div class="chart-header">
+              <span>${item.name}</span>
+              <span style="font-size:0.8rem;padding:0.2rem 0.6rem;background:${color}22;color:${color};border-radius:1rem;">${statusLabel[item.status]}</span>
+            </div>
+            <div class="gauge-container">
+              <svg class="gauge" viewBox="0 0 120 120">
+                <circle class="gauge-bg" cx="60" cy="60" r="54"/>
+                <circle class="gauge-fill" cx="60" cy="60" r="54"
+                  stroke="${color}"
+                  stroke-dasharray="${fillDash} ${circumference}"
+                  stroke-dashoffset="0"/>
+              </svg>
+              <div class="gauge-value">
+                <span class="val" style="color:${color};">${item.value}</span>
+                <span class="unit">${item.unit}</span>
+              </div>
+            </div>
+            <div style="width:100%;margin-top:1rem;">
+              <div style="position:relative;height:8px;background:#e5e7eb;border-radius:4px;overflow:visible;">
+                <!-- Ideal zone -->
+                <div style="position:absolute;top:-2px;left:${idealZoneLeft}%;width:${idealZoneWidth}%;height:12px;background:#10b98133;border:1px solid #10b981;border-radius:2px;"></div>
+                <!-- Value indicator -->
+                <div style="position:absolute;top:-4px;left:calc(${pct}% - 6px);width:16px;height:16px;background:${color};border-radius:50%;border:2px solid white;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;margin-top:0.4rem;font-size:0.72rem;color:#888;">
+                <span>${item.absMin}</span>
+                <span style="color:#10b981;font-weight:600;">理想: ${item.min}〜${item.max}</span>
+                <span>${item.absMax}</span>
+              </div>
+            </div>
+            <div style="margin-top:0.75rem;font-size:0.78rem;color:#666;text-align:center;">${item.note}</div>
+          </div>
+        `;
+      }
+
+      const container = document.getElementById('charts-container');
+      if (container) {
+        container.innerHTML = bloodData.map(buildGaugeChart).join('');
+      }
+    </script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
